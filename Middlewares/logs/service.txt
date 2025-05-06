@@ -1,0 +1,7 @@
+[2025-05-06T08:51:08.593Z] GET / - Response: {"success":true,"message":"Books retrieved successfully.","books":[]}
+[2025-05-06T08:51:30.098Z] POST /create - Response: {"success":true,"message":"Book added successfully.","data":{"id":1,"name":"Ponnein selvan 1","author":"kalki"}}
+[2025-05-06T11:35:50.359Z] GET / - Response: {"success":true,"message":"Books retrieved successfully.","books":[]}
+[2025-05-06T11:35:54.202Z] POST /create - Response: {"success":true,"message":"Book added successfully.","data":{"id":1,"name":"Ponnein selvan 1","author":"kalki"}}
+[2025-05-06T11:35:55.135Z] POST /create - Response: {"success":false,"message":"Book with this ID already exists."}
+[2025-05-06T11:36:04.720Z] POST /create - Response: {"success":true,"message":"Book added successfully.","data":{"id":2,"name":"Ponnein selvan 2","author":"kalki"}}
+[2025-05-06T11:36:08.309Z] GET / - Response: {"success":true,"message":"Books retrieved successfully.","books":[{"id":1,"name":"Ponnein selvan 1","author":"kalki"},{"id":2,"name":"Ponnein selvan 2","author":"kalki"}]}
