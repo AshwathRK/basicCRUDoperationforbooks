@@ -1,5 +1,6 @@
 const { log } = require('console');
 const express = require('express');
+require("./db");
 const HTTP_SERVER = express();
 const { logReqResponceMiddleware } = require('./Middlewares/loging');
 const booksRouter = require('./Router/router.books');

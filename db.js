@@ -1,16 +1,12 @@
-const mongoose = require('mongoose')
+// db.js
+const mongoose = require('mongoose');
 
-const CONNECTION_URI = 'mongodb://localhost:27017/bookify'
+const CONNECTION_URI = 'mongodb://localhost:27017/bookify';
 
-(() => {
-    mongoose.connect(CONNECTION_URI,{
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }).then((result) => {
-        if(result) {
-            console.log("Mongodb connection successfull");
-        }
-    }).catch((error) => {
-        console.log(error)
+mongoose.connect(CONNECTION_URI)
+    .then(() => {
+        console.log('MongoDB connection successful');
     })
-})();
+    .catch((error) => {
+        console.error('MongoDB connection error:', error);
+    });
