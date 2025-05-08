@@ -1,12 +1,15 @@
-let books = [];
+const bookifyModel = require('../Module/books')
 
 // GET route to retrieve all books
-const handleGetBooks = (req, res) => {
+
+const handleGetBooks = async (req, res) => {
     try {
+        const result = await bookifyModel.find();
+        console.log("Result:", result)
         return res.status(200).json({
             success: true,
             message: 'Books retrieved successfully.',
-            books
+            result
         });
     } catch (error) {
         return res.status(500).json({
@@ -18,16 +21,18 @@ const handleGetBooks = (req, res) => {
 
 // POST route to create a new book
 const handlePostBooks = (req, res) => {
-    const { id, name, author } = req.body;
+    const Purpose = new bookifyModel(req.body)
+    const result = Purpose.save()
+    const { name, author } = req.body;
 
-    if (!id || !name || !author) {
+    if (!name || !author) {
         return res.status(400).json({
             success: false,
-            message: 'ID, name and author are required.'
+            message: `${result._id}ID, name and author are required.`
         });
     }
 
-    if (books.some(book => book.id == id)) {
+    if (result.some(book => book.id == id)) {
         return res.status(400).json({
             success: false,
             message: 'Book with this ID already exists.'
@@ -35,11 +40,11 @@ const handlePostBooks = (req, res) => {
     }
 
     try {
-        books.push({ id, name, author });
+        result.push({ name, author });
         return res.status(201).json({
             success: true,
             message: 'Book added successfully.',
-            data: {id, name, author }
+            data: { id, name, author }
         });
     } catch (error) {
         return res.status(500).json({
